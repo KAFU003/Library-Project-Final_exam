@@ -2,12 +2,29 @@
 
 <div class='well'>
     <div style="display: flex; align-items: center;">
-        <a href="/">
-        <img src="{% static "images/library-darkMode.png" %}" height="100"> <!-- 將 height 設置為較小的值，如 50 -->
+        <img src="{% static "images/library-darkMode.png" %}" height="75"> <!-- 將 height 設置為較小的值，如 50 -->
         </a>
-        <p style='font-family:微軟正黑體;font-size:40pt;letter-spacing:2pt; margin-left: 10px; margin-top: 11px;'> <!-- 修正 margin-TOP 到 margin-top -->
+        <p style='font-family:微軟正黑體;font-size:30pt;letter-spacing:2pt; margin-left: 10px; margin-top: 10px;'> <!-- 修正 margin-TOP 到 margin-top -->
             LIBRARY
         </p>
-        {% include 'navbar.html' %}
+        <nav class="bg-slate-100 dark:bg-slate-900 text-gray-900 dark:text-gray-50 px=4">
+            <div>
+                <a href = "{% url 'change-theme' %}" class= "bg-gray-100 px-4 py-2 rounded-xl hover:bg-gray-300 duration-300 dark:bg-slate-600">
+                {% if is_dark_theme %}
+                    <i class="fa-solid fa-sun"></i>
+                {% else %}
+                    <i class="fa-solid fa-moon"></i>
+                {% endif %}
+                </a>
+            </div>
+        </nav>
+        <div class="row">
+            <form action="/search_books/" method="get" class="col">
+                <div class="form-group d-flex">
+                    <input type="text" class="form-control" id="keyword" name="keyword" placeholder="(在這裡輸入書名)">
+                    <button type="submit" class="btn btn-primary ml-2" style="height: 38px; width:70px;">查詢</button>
+                </div>
+            </form>
+        </div>   
     </div>
 </div>

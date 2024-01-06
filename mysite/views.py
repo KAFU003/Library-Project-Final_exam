@@ -17,9 +17,12 @@ def change_theme(request, **kwargs):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER','/'))
 
 def homepage(request):
+    return render(request, 'index.html')
+
+def view_book(request):
     posts = Post.objects.all()
     now = datetime.now()
-    return render(request, 'index.html', {'posts': posts})
+    return render(request, 'view_book.html', {'posts': posts})
 
 def intro(request, post_slug):
     post = get_object_or_404(Post, slug=post_slug)
@@ -43,6 +46,18 @@ def filter(request):
     }
  
     return render(request, 'filter.html', context)
+
+def search_books(request):
+    keyword = request.GET.get('keyword', '').strip()
+
+    if not keyword:
+        return render(request, 'search_book.html', {'empty': True})
+    else:
+        books = Post.objects.filter(title__icontains=keyword)
+        if not books:
+            return render(request, 'search_book.html', {'no_result': True, 'keyword': keyword})
+        else:
+            return render(request, 'search_book.html', {'posts': books, 'keyword': keyword})
 
 @login_required(login_url = '/user_login')
 def profile(request):
@@ -124,6 +139,9 @@ def user_login(request):
             return render(request, "user_login.html", {'alert':alert})
     return render(request, "user_login.html")
 
+def Logout(request):
+    logout(request)
+    return redirect ("/")
 
 '''
 def homepage(request):

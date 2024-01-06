@@ -1,28 +1,13 @@
 {% extends "base2.html" %}
 {% block title %}歡迎光臨咱們的圖書館{% endblock title %}
-{% block headmessage %} <h3 style='font-family:微軟正黑體;'>圖書列表</h3> {% endblock headmessage %} 
-{% block content %} 
-{% for post in posts %}
-<div class="card">
-    <div class="row no-gutters">
-        <div class="col-md-2">
-            <!-- 左側列放置圖像 -->
-            <img src="{{ post.image_url }}" alt="Post Image" class="card-img">
-        </div>
-        <div class="col-md-8">
-            <!-- 右側是cardㄉ內容-->
-            <div class="card-body">
-                <h3 class="card-title">{{ post.title }}
-                </h3>
-                <h5 class="card-text">作者: {{ post.author }}</h5>
-                <h5 class="card-text">{{ post.chapter }}</h5>
-                <h5 class="card-text">出版時間: {{ post.pub_date }}</h5>
-                <a href="/intro/{{ post.slug }}" class="btn btn-primary">開始租借</a>
-                <a href="javascript:void(0);" class="btn btn-primary" onclick="addToMyList('{{ post.title }}')">加入收藏!</a>
-            </div>
-        </div>
+{% block headmessage %} <h3 style='font-family:微軟正黑體;'>選擇身分</h3> {% endblock headmessage %} 
+{% block content %}
+<div class="row text-center">
+    <div class="col-lg-6">
+        <a class="btn btn-outline-primary btn-lg" href="/admin_login/">管理員</a>
+    </div>
+    <div class="col-lg-6">
+        <a class="btn btn-outline-primary btn-lg" href="/user_login/">一般使用者</a>
     </div>
 </div>
-{% endfor %}
 {% endblock content %}
-<a href="/intro/{{ post.slug }}">{{ post.title }}</a>

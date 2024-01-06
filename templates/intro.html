@@ -3,7 +3,13 @@
 {% block headmessage %} 
 <div style='display: flex; justify-content: space-between; align-items: center;'>
     <h3 style='font-family: 微軟正黑體;'>{{ post.title }}簡介</h3>
-    <a style='font-family: 微軟正黑體;' href='/'>回首頁</a>
+    <button onclick="goBack()">回上頁</button>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </div>
 {% endblock headmessage %} 
 {% block content %} 
@@ -21,7 +27,12 @@
                 <h5 class="card-text">內容簡介︰</h5>
                 <h5 class="card-text">{{ post.body }}</h5>
                 <h5 class="card-text">出版日期︰ {{ post.pub_date }}</h5>
-                <a href="javascript:void(0);" class="btn btn-primary" onclick="addToMyList('{{ post.title }}')">加入收藏!</a>     
+                {% if user.is_authenticated %}
+                <a href="javascript:void(0);" class="btn btn-primary" onclick="addToMyList('{{ post.title }}')">加入收藏!</a>
+                {% else %}
+                <br>
+                <h3><i style="color: red;">未登入無法借書喔</i></h3>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -30,9 +41,15 @@
     <div class="card-header"><h4 style='font-family:微軟正黑體;'>集數</h4></div>
         <ul style="list-style: none; padding: 0; margin: 0;">
             {% for episode in episodes %}
-            <li style="display: inline-block; margin-right: 10px;">
-                <a href="{% url 'showepisode' episode.id %}" style="font-size: 20pt;">{{ episode.episode }}</a>
-            </li>
+                {% if user.is_authenticated %}
+                    <li style="display: inline-block; margin-right: 10px;">
+                        <a href="{% url 'showepisode' episode.id %}" style="font-size: 20pt;">{{ episode.episode }}</a>
+                    </li>
+                    {% else %}
+                    <li style="display: inline-block; margin-right: 10px;">
+                        <a href="#" style="font-size: 20pt;">{{ episode.episode }}</a>
+                    </li>
+                {% endif %}
             {% endfor %}
         </ul>
 </div>

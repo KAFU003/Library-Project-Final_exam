@@ -4,7 +4,13 @@
 {% block headmessage %} 
 <div style='display: flex; justify-content: space-between; align-items: center;'>
     <h3 style='font-family: 微軟正黑體;'>{{ post.title }}簡介</h3>
-    <a style='font-family: 微軟正黑體;' href='/'>回首頁</a>
+    <button onclick="goBack()">回上頁</button>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </div>
 {% endblock headmessage %} 
 {% block content %} 

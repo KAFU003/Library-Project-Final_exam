@@ -1,5 +1,5 @@
 {% extends "base2.html" %}
-{% block title %} {{ post.title }} - 介紹{% endblock title %}
+{% block title %} {{ post.title }}使用者註冊{% endblock title %}
 {% block headmessage %} 
 <div style='display: flex; justify-content: space-between; align-items: center;'>
     <h3 style='font-family: 微軟正黑體;'>{{ post.title }}簡介</h3>
@@ -10,7 +10,7 @@
 <div class="container">
     <form method="POST" enctype="multipart/form-data"> {% csrf_token %}
         <br>
-        <h1 class="text-center"><u>Student Registration</u></h1>
+        <h1 class="text-center"><u>使用者註冊</u></h1>
     <div class="row mt-4">
         <div class="form-group col-md-12">
             <label><i style="font-weight: bold;">帳號</i></label>
