@@ -1,7 +1,9 @@
 {% extends 'base2.html' %}
  
+{% block title %} {{ post.title }}詳細查詢{% endblock title %}
+{% block headmessage %} <h3 style='font-family:微軟正黑體;'>詳細查詢</h3> {% endblock headmessage %} 
 {% block content %}
- 
+
 <form method='POST'>
     {% csrf_token %}
     名稱：{{ bookFilter.form.title }}
