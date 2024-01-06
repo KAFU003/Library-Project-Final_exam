@@ -1,0 +1,16 @@
+{% extends "base2.html" %}
+{% load markdown_extras %}
+{% block title %} {{ episode.title }} - OuOb {% endblock title %}
+{% block headmessage %} 
+<div style='display: flex; justify-content: space-between; align-items: center;'>
+    <h3 style='font-family: 微軟正黑體;'>{{ episode.title }}-{{ episode.episode }}</h3>
+    <a style='font-family: 微軟正黑體;' href='/'>回首頁</a>
+</div>
+{% endblock headmessage %} 
+{% block content %} 
+<hr>
+<p>{% with episode.content|linebreaks as content %}
+    {{ content|safe }}
+{% endwith %}</p>
+<hr>
+{% endblock content %}

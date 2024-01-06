@@ -1,0 +1,40 @@
+{% extends "base2.html" %}
+
+{% block title %} {{ post.title }} - 介紹{% endblock title %}
+{% block headmessage %} 
+<div style='display: flex; justify-content: space-between; align-items: center;'>
+    <h3 style='font-family: 微軟正黑體;'>{{ post.title }}簡介</h3>
+    <a style='font-family: 微軟正黑體;' href='/'>回首頁</a>
+</div>
+{% endblock headmessage %} 
+{% block content %} 
+<div class="container">
+    <br>
+    <h1 class="text-center"><u>使用者登入</u></h1>
+        <form method="POST"> {% csrf_token %}
+        <div class="row mt-4">
+            <div class="form-group col-md-12">
+                <label><i style="font-weight: bold;">帳號</i></label>
+                <input type="text" class="form-control mt-2" name="username" placeholder="Enter Username" required>
+            </div>
+        </div>
+    
+        <div class="row mt-4">
+            <div class="form-group col-md-12">
+                <label><i style="font-weight: bold;">密碼</i></label>
+                <input type="password" class="form-control mt-2" name="password" placeholder="Enter Password" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-outline-primary mt-4">登入!!!</button>
+    </div>
+    <a style='font-family: 微軟正黑體;' href='/user_registration'>沒帳號嗎?</a>
+
+{% endblock content %}
+{% block js %}
+{% if alert %}
+    <script>
+        alert("錯誤的使用者或密碼.");
+        window.location.href = "/user_login"; 
+    </script>
+{% endif %}
+{% endblock %}

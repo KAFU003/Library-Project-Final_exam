@@ -1,0 +1,13 @@
+{% load static %}
+
+<div class='well'>
+    <div style="display: flex; align-items: center;">
+        <a href="/">
+        <img src="{% static "images/library-darkMode.png" %}" height="100"> <!-- 將 height 設置為較小的值，如 50 -->
+        </a>
+        <p style='font-family:微軟正黑體;font-size:40pt;letter-spacing:2pt; margin-left: 10px; margin-top: 11px;'> <!-- 修正 margin-TOP 到 margin-top -->
+            LIBRARY
+        </p>
+        {% include 'navbar.html' %}
+    </div>
+</div>

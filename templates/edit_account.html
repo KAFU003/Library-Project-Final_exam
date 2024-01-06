@@ -1,0 +1,69 @@
+{% extends "base2.html" %}
+
+{% block title %} {{ post.title }} - 介紹{% endblock title %}
+{% block headmessage %} 
+<div style='display: flex; justify-content: space-between; align-items: center;'>
+    <h3 style='font-family: 微軟正黑體;'>{{ post.title }}簡介</h3>
+    <a style='font-family: 微軟正黑體;' href='/'>回首頁</a>
+</div>
+{% endblock headmessage %} 
+{% block content %} 
+<form class="container mt-3" method="POST" name="change_password" onsubmit="return checkPassword()">
+    {% csrf_token %}
+    <div class="row mt-4">
+        <div class="form-group col-md-6">
+            <label><i style="font-weight: bold;">Username</i></label>
+            <input type="text" class="form-control mt-2" name="username" value="{{request.user}}" readonly>
+        </div>
+        <div class="form-group col-md-6">
+            <label><i style="font-weight: bold;">Current Password</i></label>
+            <input type="password" class="form-control mt-2" name="current_password" placeholder="Current Password" required>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="form-group col-md-12">
+            <label><i style="font-weight: bold;">New Password</i></label>
+            <input type="password" class="form-control mt-2" name="new_password" placeholder="Enter the new password" required>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="form-group col-md-12">
+            <label><i style="font-weight: bold;">Confirm Password</i></label>
+            <input type="password" class="form-control mt-2" name="confirm_password" placeholder="Confirm the new password" required>
+        </div>
+    </div>
+
+    <input type="submit" class="btn btn-outline-primary mt-4" value="修改帳號/密碼">
+</form>
+{% endblock %}
+
+{% block js %}
+<script>
+    function checkPassword() {
+        if (document.change_password.new_password.value != document.change_password.confirm_password.value) {
+            alert("確認密碼不一致!.");
+            document.change_password.confirm_password.focus();
+            return false;
+        }
+        return true;
+    }
+</script>
+
+{% if alert %}
+<script>
+    alert("Password Updated Successfully.");
+    document.location = "/logout"
+</script>
+{% endif %}
+
+{% if currpasswrong %}
+<script>
+    alert("Current Password is wrong..");
+    document.location = "/edit_account"
+</script>
+{% endif %}
+
+{% endblock %}
+

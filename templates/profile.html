@@ -1,0 +1,53 @@
+{% extends "base2.html" %}
+{% load static %}
+
+{% block title %} {{ post.title }} - 介紹{% endblock title %}
+{% block headmessage %} 
+<div style='display: flex; justify-content: space-between; align-items: center;'>
+    <h3 style='font-family: 微軟正黑體;'>{{ post.title }}簡介</h3>
+    <a style='font-family: 微軟正黑體;' href='/'>回首頁</a>
+</div>
+{% endblock headmessage %} 
+{% block content %} 
+<div class="container profile">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="profile-img">
+                <img src="{% static 'images/cute-anime-girl-3.gif' %}" height="200">
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="profile-tab">
+                <div class="tab-pane">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>帳號:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{user}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>姓名:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{user.get_full_name}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Email:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{user.email}}</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="/edit_profile/" style="width: 9rem;" class="btn btn-outline-primary mt-3">修改個人內容</a>
+                <a href="/edit_account/" style="width: 9rem;" class="btn btn-outline-primary mt-3">修改帳號/密碼</a>
+            </div>
+        </div>
+</div>
+</div>
+{% endblock %}

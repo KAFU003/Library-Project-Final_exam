@@ -1,0 +1,135 @@
+/* 按鈕ㄉ樣式*/
+.btn-primary {
+  background-color: #383838 !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 5px 10px !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s !important;
+}
+
+/* 切換themeㄉ按鈕樣式*/
+.px-4 {
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+.py-2 {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem !important;
+}
+
+/* 暗黑模式ㄉ樣式 */
+:is(.dark .dark\:bg-slate-600) { /* 按鈕ㄉ樣式 */
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(346, 59, 80 / var(--tw-bg-opacity)) !important;
+}
+
+:is(.dark .dark\:text-gray-50) { /* library */
+  --tw-text-opacity: 1 !important;
+  color: rgb(249 250 251 / var(--tw-text-opacity)) !important;
+}
+
+/* 自訂一些色彩 */
+:root {
+  --body-bg-light: rgb(243, 244, 246);
+  --body-bg-dark: rgb(46, 59, 80);
+  --card-bg-light: rgb(170, 173, 179) ;
+  --card-bg-dark: rgb(71, 85, 105);
+  --card-header-bg-dark-light: rgb(170, 173, 179) ;
+  --card-header-bg-dark: rgb(60, 72, 88);
+  --card-footer-bg-dark: rgb(60, 72, 88);
+  --card-text-light: rgb(0, 0, 0);
+  --card-text-dark: rgb(201, 199, 199);
+  --list-item-bg-light: rgb(243, 244, 246);
+  --list-item-bg-dark: rgb(71, 85, 105);
+  --list-item-text-light: rgb(0, 0, 0);
+  --list-item-text-dark: rgb(201, 199, 199);
+  --link-light: rgb(48, 47, 47) !important;
+  --link-dark: rgb(201, 199, 199);
+  --table-bg-light: rgb(243, 244, 246);
+  --table-bg-dark: rgb(71, 85, 105);
+  --table-text-light: rgb(0, 0, 0);
+  --table-text-dark: rgb(249, 250, 251);
+}
+
+/* 頁面ㄉ顏色 */
+body {
+  background-color: var(--body-bg-light) ;
+  transition: background-color 0.3s;
+}
+
+/* 暗黑模式下頁面ㄉ顏色  */
+.dark body {
+  background-color: var(--body-bg-dark);
+}
+
+/* 卡片ㄉ顏色 */
+.card {
+  background-color: var(--card-bg-light);
+  color: var(--card-text-light);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* 在暗模式下卡片ㄉ顏色 */
+.dark .card {
+  background-color: var(--card-bg-dark);
+  color: var(--card-text-dark);
+}
+
+.card-header {
+  background-color: var(--card-header-bg-light);
+  color: var(--card-header-text-light);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* 在暗模式下修改 card-header 的背景颜色和文本颜色 */
+.dark .card-header {
+  background-color: var(--card-header-bg-dark);
+  color: var(--card-header-text-dark);
+}
+
+.dark .card-footer {
+  background-color: var(--card-header-bg-dark);
+  color: var(--card-header-text-dark);
+}
+
+/* 連結ㄉ顏色 */
+a {
+  color: var(--link-light);
+}
+
+.dark a {
+  color: var(--link-dark);
+}
+
+/* 列表ㄉ顏色 */
+.list-group-item {
+  background-color: var(--list-item-bg-light);
+  color: var(--list-item-text-light);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+
+.dark .list-group-item {
+  background-color: var(--list-item-bg-dark);
+  color: var(--list-item-text-dark);
+}
+
+/* 表格顏色(暫時沒用) */
+table-body{
+  background-color: var(--table-bg-light);
+  color: var(--table-text-light);
+}
+
+.dark table-text{
+  background-color: var(--table-bg-dark);
+  color: var(--table-text-dark);
+}

@@ -1,0 +1,16 @@
+.btn-primary {
+    background-color: #ffffff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px ;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+
+  a[href^="/post/"] {
+    color: rgb(0, 0, 0)!important;
+}

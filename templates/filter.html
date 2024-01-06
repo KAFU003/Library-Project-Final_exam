@@ -1,0 +1,29 @@
+{% extends 'base2.html' %}
+ 
+{% block content %}
+ 
+<form method='POST'>
+    {% csrf_token %}
+    名稱：{{ bookFilter.form.title }}
+    類型：{{ bookFilter.form.genre }}
+    出版日期：{{ bookFilter.form.pub_date }}
+    <input type="submit" class="btn btn-primary" value="查詢" />
+</form>
+<br />
+<table class="table">
+    <thead>
+        <th>名稱</th>
+        <th>類型</th>
+        <th>出版日期</th>
+    </thead>
+    <tbody>
+        {% for book in bookFilter.qs %}
+        <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.get_genre_display }}</td>
+            <td>{{ book.pub_date }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock  %}
