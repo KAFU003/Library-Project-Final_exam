@@ -78,13 +78,13 @@
             <input type="url" class="form-control mt-2" name="image_url" placeholder="請輸入圖片 URL" required>
         </div>
     </div>
-    <button type="submit" class="btn btn-outline-primary mt-4">Add Book</button>
+    <button type="submit" class="btn btn-outline-primary mt-4">新增書籍</button>
 </div>
 {% endblock content %}
 {% block js %}
 {% if alert %}
 <script>
-    alert("Book is added successfully.")
+    alert("成功新增書籍!.")
     document.location = "/view_books"
 </script>
 {% endif %}

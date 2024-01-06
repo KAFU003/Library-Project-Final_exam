@@ -1,6 +1,6 @@
 {% extends "base2.html" %}
 
-{% block title %} {{ post.title }}修改帳號密碼{% endblock title %}
+{% block title %}修改帳號密碼{% endblock title %}
 {% block headmessage %} 
 <div style='display: flex; justify-content: space-between; align-items: center;'>
     <h3 style='font-family: 微軟正黑體;'></h3>修改帳號密碼</h3>
@@ -53,14 +53,14 @@
 
 {% if alert %}
 <script>
-    alert("Password Updated Successfully.");
+    alert("成功更改密碼!");
     document.location = "/logout"
 </script>
 {% endif %}
 
 {% if currpasswrong %}
 <script>
-    alert("Current Password is wrong..");
+    alert("密碼錯了喔..");
     document.location = "/edit_account"
 </script>
 {% endif %}
