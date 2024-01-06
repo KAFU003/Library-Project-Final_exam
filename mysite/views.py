@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from mysite.models import Post, Episode
+from mysite.models import *
 from datetime import datetime
 from django.shortcuts import redirect, HttpResponse
 from .filters import BookFilter
@@ -58,6 +58,53 @@ def search_books(request):
             return render(request, 'search_book.html', {'no_result': True, 'keyword': keyword})
         else:
             return render(request, 'search_book.html', {'posts': books, 'keyword': keyword})
+
+@login_required(login_url = '/admin_login')
+def admin_view_book(request):
+    books = Post.objects.all()
+    return render(request, "admin_view_book.html", {'books':books})
+
+@login_required(login_url = '/admin_login')
+def view_users(request):
+    users = User.objects.all()
+    return render(request, "view_users.html", {'users':users})
+
+def delete_book(request, myid):
+    books = Post.objects.filter(id=myid)
+    books.delete()
+    return redirect("/view_book")
+
+def delete_student(request, myid):
+    users = User.objects.filter(id=myid)
+    users.delete()
+    return redirect("/view_users")
+
+@login_required(login_url='/admin_login')        
+def add_book(request):
+    if request.method == "POST":
+        title = request.POST['title']
+        genre = request.POST['genre']
+        author = request.POST['author']
+        slug = request.POST['slug']
+        chapter = request.POST['chapter']
+        body = request.POST['body']
+        pub_date = request.POST['pub_date']
+        image_url = request.POST['image_url']
+
+        post = Post.objects.create(
+            title=title,
+            genre=genre,
+            author=author,
+            slug=slug,
+            chapter=chapter,
+            body=body,
+            pub_date=pub_date,
+            image_url=image_url
+        )
+        post.save()
+        alert = True
+        return render(request, "add_book.html", {'alert': alert})
+    return render(request, "add_book.html")
 
 @login_required(login_url = '/user_login')
 def profile(request):
@@ -142,6 +189,23 @@ def user_login(request):
 def Logout(request):
     logout(request)
     return redirect ("/")
+
+def admin_login(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            if request.user.is_superuser:
+                return redirect("/add_book")
+            else:
+                return HttpResponse("You are not an admin.")
+        else:
+            alert = True
+            return render(request, "admin_login.html", {'alert':alert})
+    return render(request, "admin_login.html")
 
 '''
 def homepage(request):

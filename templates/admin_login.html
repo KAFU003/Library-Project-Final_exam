@@ -1,0 +1,46 @@
+{% extends "base2.html" %}
+
+{% block title %} {{ post.title }}管理員登入{% endblock title %}
+{% block headmessage %} 
+<div style='display: flex; justify-content: space-between; align-items: center;'>
+    <h3 style='font-family: 微軟正黑體;'>管理員登入</h3>
+    <button onclick="goBack()">回上頁</button>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</div>
+{% endblock headmessage %} 
+{% block content %} 
+<div class="container">
+    <br>
+    <h1 class="text-center"><u>管理員登入</u></h1><br>
+    <p><b>注意:</b> 只給管理員登喔CC</p>
+        <form method="POST"> {% csrf_token %}
+    
+        <div class="row mt-4">
+            <div class="form-group col-md-12">
+                <label><i style="font-weight: bold;">Username</i></label>
+                <input type="text" class="form-control mt-2" name="username" placeholder="Enter Username" required>
+            </div>
+        </div>
+    
+        <div class="row mt-4">
+            <div class="form-group col-md-12">
+                <label><i style="font-weight: bold;">Password</i></label>
+                <input type="password" class="form-control mt-2" name="password" placeholder="Enter Password" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-outline-primary mt-4">Login</button>
+    </div>
+{% endblock content %}
+{% block js %}
+{% if alert %}
+<script>
+    alert("Invalid Username or Password.")
+    document.location = "/admin_login"
+</script>
+{% endif %}
+{% endblock %}

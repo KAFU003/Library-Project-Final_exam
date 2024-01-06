@@ -1,0 +1,91 @@
+{% extends "base2.html" %}
+
+{% block title %}新增書本{% endblock title %}
+{% block headmessage %} 
+<div style='display: flex; justify-content: space-between; align-items: center;'>
+    <h3 style='font-family: 微軟正黑體;'>新增書本</h3>
+    <button onclick="goBack()">回上頁</button>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</div>
+{% endblock headmessage %} 
+{% block content %} 
+<div class="container">
+    <form method="POST"> {% csrf_token %}
+    <div class="row mt-4">
+        <div class="form-group col-md-12">
+            <label><i style="font-weight: bold;">書名</i></label>
+            <input type="text" class="form-control mt-2" name="title" placeholder="請輸入書名" required>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="form-group col-md-12">
+            <label><i style="font-weight: bold;">書名</i></label>
+            <select class="form-control mt-2" name="genre" required>
+                <option value="" selected disabled>請選擇類型</option>
+                <option value="Literature">文學</option>
+                <option value="Light Novel">輕小說</option>
+                <option value="History">歷史</option>
+                <option value="Biography">自傳</option>
+                <option value="Philosophy">哲學</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="form-group col-md-12">
+            <label><i style="font-weight: bold;">作者</i></label>
+            <input type="text" class="form-control mt-2" name="author" placeholder="請輸入作者" required>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="form-group col-md-12">
+            <label><i style="font-weight: bold;">slug</i></label>
+            <input type="text" class="form-control mt-2" name="slug" placeholder="請輸入slug" required>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="form-group col-md-12">
+            <label><i style="font-weight: bold;">共幾本</i></label>
+            <input type="text" class="form-control mt-2" name="chapter" placeholder="請輸入共幾本/卷/集" required>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="form-group col-md-12">
+            <label><i style="font-weight: bold;">簡介</i></label>
+            <input type="text" class="form-control mt-2" name="body" placeholder="請輸入簡介"  rows="5"  required>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="form-group col-md-12">
+            <label><i style="font-weight: bold;">出版日期</i></label>
+            <input type="text" class="form-control mt-2" name="pub_date" placeholder="請輸入出版日期" required>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="form-group col-md-12">
+            <label><i style="font-weight: bold;">圖片 URL</i></label>
+            <input type="url" class="form-control mt-2" name="image_url" placeholder="請輸入圖片 URL" required>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-outline-primary mt-4">Add Book</button>
+</div>
+{% endblock content %}
+{% block js %}
+{% if alert %}
+<script>
+    alert("Book is added successfully.")
+    document.location = "/view_books"
+</script>
+{% endif %}
+{% endblock %}

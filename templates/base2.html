@@ -15,10 +15,6 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">    
     </head>
     <body class="bg-gray-50 dark:bg-slate-800 text-black dark:text-gray-50">
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
             <div class="container-fluid">
                 {% include 'header.html' %}
@@ -28,35 +24,67 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    {% if user.is_authenticated %}
+                    {% if user.is_superuser %}
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/view_users/">查看使用者</a>
+                      </li>
+                      &nbsp;&nbsp;&nbsp;
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Books
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" href="/add_book/">新增書籍</a></li>
+                          <li><a class="dropdown-item" href="/view_book/">查看書籍</a></li>
+                        </ul>
+                      </li>
+                      &nbsp;&nbsp;&nbsp;
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          借還書
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" href="/issue_book/">Issue A Book</a></li>
+                          <li><a class="dropdown-item" href="/view_issued_book/">View All Issued Books</a></li>
+                        </ul>
+                      </li>
+                      &nbsp;&nbsp;&nbsp;
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/logout/">登出</a>
+                      </li>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <li class="nav-item">
+                        <a style="font-weight:600; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: large;" class="nav-link active" href="#">歡迎管理員: {{request.user}}</a>
+                      </li>
+                    
+                    {% elif user.is_authenticated %}
                         &nbsp;&nbsp;&nbsp;
                         <li class="nav-item">
-                            <a style="font-size: 25px;" class="nav-link active" aria-current="page" href="/profile/">個人</a>
+                            <a style="font-size: 25px;" class="nav-link active" aria-current="個人" href="/profile/">個人</a>
                         </li>
                         &nbsp;&nbsp;&nbsp;
                         <li class="nav-item">
-                            <a style="font-size: 25px;" class="nav-link active" aria-current="page" href="/view_book">書籍列表</a>
+                            <a style="font-size: 25px;" class="nav-link active" aria-current="書籍列表" href="/view_book">書籍列表</a>
                         </li>
                         &nbsp;&nbsp;&nbsp;
                         <li class="nav-item">
-                            <a style="font-size: 25px;" class="nav-link active" aria-current="page" href="/filter">詳細查詢</a>
+                            <a style="font-size: 25px;" class="nav-link active" aria-current="詳細查詢" href="/filter">詳細查詢</a>
                         </li>
                         &nbsp;&nbsp;&nbsp;
                         <li class="nav-item">
-                            <a style="font-size: 25px;" class="nav-link active" aria-current="page" href="/logout/">登出</a>
+                            <a style="font-size: 25px;" class="nav-link active" aria-current="登出" href="/logout/">登出</a>
                         </li>
                         &nbsp;&nbsp;&nbsp;
-
-                        
                         <li class="nav-item">
                             <a style="font-size: 25px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" class="nav-link active" href="#">歡迎使用者: {{request.user}} <3</a>
                         </li>
+
                     {% else %}
                         <li class="nav-item">
-                            <a style="font-size: 25px;" class="nav-link active" aria-current="page" href="/view_book">Home</a>
+                            <a style="font-size: 25px;" class="nav-link active" aria-current="Home" href="/view_book">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a style="font-size: 25px;" class="nav-link active" aria-current="page" href="/">登入</a>
+                            <a style="font-size: 25px;" class="nav-link active" aria-current="登入" href="/">登入</a>
                         </li>
                   {% endif %}
                 </ul>
@@ -112,7 +140,6 @@
                     alert(bookTitle + " 您已成功收藏此書!。");}
             }
         </script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
         {% block js %}
         {% endblock %}
     </body>

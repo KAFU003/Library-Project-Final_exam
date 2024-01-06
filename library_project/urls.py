@@ -28,10 +28,20 @@ urlpatterns = [
     path('filter/', mv.filter, name="filter"),
     path('search_books/', mv.search_books, name='search_books'),
     path('episode/<int:episode_id>/', mv.showepisode, name='showepisode'),
-    path('profile/', mv.profile, name='profile'),
-    path('user_registration/', mv.user_registration, name='user_registration'),
+    
+    path('admin_login/', mv.admin_login, name='admin_login'),
+    path('view_users/', mv.view_users, name='view_users'),
+    path('add_book/', mv.add_book, name='add_book'),
+
     path('user_login/', mv.user_login, name='user_login'),
-    path("logout/", mv.Logout, name="logout"),
+    path('user_registration/', mv.user_registration, name='user_registration'),
+    path('profile/', mv.profile, name='profile'),
     path('edit_profile/', mv.edit_profile, name='edit_profile'),
     path('edit_account/', mv.edit_account, name='edit_account'),
+    path("logout/", mv.Logout, name="logout"),
+
+    path("delete_book/<int:myid>/", mv.delete_book, name="delete_book"),
+    path("delete_user/<int:myid>/", mv.delete_student, name="delete_student"),
+
+    
 ]
