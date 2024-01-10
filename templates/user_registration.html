@@ -1,9 +1,14 @@
 {% extends "base2.html" %}
-{% block title %} {{ post.title }}使用者註冊{% endblock title %}
+{% block title %}使用者註冊{% endblock title %}
 {% block headmessage %} 
 <div style='display: flex; justify-content: space-between; align-items: center;'>
-    <h3 style='font-family: 微軟正黑體;'>{{ post.title }}簡介</h3>
-    <a style='font-family: 微軟正黑體;' href='/'>回首頁</a>
+    <h3 style='font-family: 微軟正黑體;'>{{ post.title }}使用者註冊</h3>
+    <button onclick="goBack()">回上頁</button>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </div>
 {% endblock headmessage %} 
 {% block content %} 
@@ -14,35 +19,35 @@
     <div class="row mt-4">
         <div class="form-group col-md-12">
             <label><i style="font-weight: bold;">帳號</i></label>
-            <input type="text" class="form-control mt-2" name="username" placeholder="Enter Username" required>
+            <input type="text" class="form-control mt-2" name="username" placeholder="請輸入帳號" required>
         </div>
     </div>
     <div class="row mt-4">
         <div class="form-group col-md-6">
             <label><i style="font-weight: bold;">姓</i></label>
-            <input type="text" class="form-control mt-2" name="first_name" placeholder="Enter First Name" required>
+            <input type="text" class="form-control mt-2" name="first_name" placeholder="請輸入姓" required>
         </div>
         <div class="form-group col-md-6">
             <label><i style="font-weight: bold;">名字</i></label>
-            <input type="text" class="form-control mt-2" name="last_name" placeholder="Enter Last Name" required>
+            <input type="text" class="form-control mt-2" name="last_name" placeholder="請輸入名稱" required>
         </div>
     </div>
 
     <div class="row mt-4">
         <div class="form-group col-md-6">
             <label><i style="font-weight: bold;">Email</i></label>
-            <input type="email" class="form-control mt-2" name="email" placeholder="Enter Email" required>
+            <input type="email" class="form-control mt-2" name="email" placeholder="請輸入Email" required>
         </div>
     </div>
 
     <div class="row mt-4">
         <div class="form-group col-md-6">
             <label><i style="font-weight: bold;">密碼</i></label>
-            <input type="password" class="form-control mt-2" name="password" placeholder="Enter Password" required>
+            <input type="password" class="form-control mt-2" name="password" placeholder="請輸入密碼" required>
         </div>
         <div class="form-group col-md-6">
             <label><i style="font-weight: bold;">確認密碼</i></label>
-            <input type="password" class="form-control mt-2" name="confirm_password" placeholder="Confirm Password" required>
+            <input type="password" class="form-control mt-2" name="confirm_password" placeholder="請輸入確認密碼" required>
         </div>
     </div>
     <button type="submit" class="btn btn-outline-primary mt-4">註冊帳號!</button>

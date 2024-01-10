@@ -1,6 +1,16 @@
 {% extends "base2.html" %}
-{% block title %}歡迎光臨咱們的圖書館{% endblock title %}
-{% block headmessage %} <h3 style='font-family:微軟正黑體;'>查詢結果</h3> {% endblock headmessage %} 
+{% block title %}查詢結果{% endblock title %}
+{% block headmessage %} 
+<div style='display: flex; justify-content: space-between; align-items: center;'>
+    <h3 style='font-family: 微軟正黑體;'>查詢結果</h3>
+    <button onclick="goBack()">回上頁</button>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</div>
+{% endblock headmessage %} 
 {% block content %} 
 {% if empty %}
         <h2>請輸入關鍵字</h2>

@@ -5,7 +5,6 @@
 <div style='display: flex; justify-content: space-between; align-items: center;'>
     <h3 style='font-family: 微軟正黑體;'>{{ post.title }}使用者登入</h3>
     <button onclick="goBack()">回上頁</button>
-
     <script>
         function goBack() {
             window.history.back();
@@ -21,14 +20,14 @@
         <div class="row mt-4">
             <div class="form-group col-md-12">
                 <label><i style="font-weight: bold;">帳號</i></label>
-                <input type="text" class="form-control mt-2" name="username" placeholder="Enter Username" required>
+                <input type="text" class="form-control mt-2" name="username" placeholder="輸入帳號" required>
             </div>
         </div>
     
         <div class="row mt-4">
             <div class="form-group col-md-12">
                 <label><i style="font-weight: bold;">密碼</i></label>
-                <input type="password" class="form-control mt-2" name="password" placeholder="Enter Password" required>
+                <input type="password" class="form-control mt-2" name="password" placeholder="輸入密碼" required>
             </div>
         </div>
         <button type="submit" class="btn btn-outline-primary mt-4">登入!!!</button>

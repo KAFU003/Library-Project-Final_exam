@@ -1,11 +1,9 @@
 {% extends "base2.html" %}
-
 {% block title %}查看使用者{% endblock title %}
 {% block headmessage %} 
 <div style='display: flex; justify-content: space-between; align-items: center;'>
-    <h3 style='font-family: 微軟正黑體;'>管理員登入</h3>
+    <h3 style='font-family: 微軟正黑體;'>查看使用者</h3>
     <button onclick="goBack()">回上頁</button>
-
     <script>
         function goBack() {
             window.history.back();
@@ -15,14 +13,14 @@
 {% endblock headmessage %} 
 {% block content %} 
 <div class="container mt-4">
-    <h1 class="text-center"><u>Students List</u></h1>
+    <h1 class="text-center"><u>使用者名單</u></h1>
     <table class="table table-hover" id="example">
         <thead>
             <tr class="text-center">
-                <th>Username</th>
-                <th>Full Name</th>
+                <th>帳號</th>
+                <th>名字</th>
                 <th>Email</th>
-                <th>Delete</th>
+                <th>刪除帳號</th>
             </tr>
         </thead>
         <tbody>
@@ -31,7 +29,7 @@
                 <td>{{user.username}}</td>
                 <td>{{user.get_full_name}}</td>
                 <td>{{user.email}}</td>
-                <td><a href="/delete_user/{{user.id}}/" class="btn btn-danger" onclick="return confirm('你確定要刪除嗎')">Delete</a></td>
+                <td><a href="/delete_user/{{user.id}}/" class="btn btn-danger" onclick="return confirm('你確定要刪除嗎')">刪除</a></td>
             </tr>
             {% endfor %}
         </tbody>

@@ -1,6 +1,17 @@
 {% extends "base2.html" %}
 {% block title %}歡迎光臨咱們的圖書館{% endblock title %}
-{% block headmessage %} <h3 style='font-family:微軟正黑體;'>圖書列表</h3> {% endblock headmessage %} 
+{% block headmessage %} 
+<div style='display: flex; justify-content: space-between; align-items: center;'>
+    <h3 style='font-family: 微軟正黑體;'>查看書籍</h3>
+    <button onclick="goBack()">回上頁</button>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</div>
+{% endblock headmessage %} 
+
 {% block content %} 
 {% for post in posts %}
 <div class="card">
